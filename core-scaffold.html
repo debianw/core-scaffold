@@ -69,7 +69,7 @@ To have the content fit to the main area, use `fit` attribute.
 <link rel="import" href="../core-header-panel/core-header-panel.html">
 <link rel="import" href="../core-icon-button/core-icon-button.html">
 
-<polymer-element name="core-scaffold">
+<polymer-element name="main-scaffold">
 <template>
 
   <style>
@@ -107,7 +107,7 @@ To have the content fit to the main area, use `fit` attribute.
 
     </div>
     
-    <core-header-panel id="headerPanel" main mode="{{mode}}">
+    <core-header-panel id="headerPanel" main mode="{{mode}}" tallClass="{{tallClass}}" shadow>
 
       <core-toolbar>
         <template if="{{!rightDrawer}}">
@@ -128,16 +128,16 @@ To have the content fit to the main area, use `fit` attribute.
 </template>
 <script>
 
-  Polymer('core-scaffold', {
+  Polymer({
     
     /**
      * Fired when the main content has been scrolled.  `event.detail.target` returns
      * the scrollable element which you can use to access scroll info such as
      * `scrollTop`.
      *
-     *     <core-scaffold on-scroll="{{scrollHandler}}">
+     *     <main-scaffold on-scroll="{{scrollHandler}}">
      *       ...
-     *     </core-scaffold>
+     *     </main-scaffold>
      *
      *
      *     scrollHandler: function(event) {
@@ -196,7 +196,17 @@ To have the content fit to the main area, use `fit` attribute.
        * @type string
        * @default 'seamed'
        */     
-      mode: {value: 'seamed', reflect: true}
+      mode: {value: 'seamed', reflect: true},
+
+      /**
+       * Tall class for the main core-header-panel
+       *
+       * @attribute tallClass
+       * @type string
+       * @default 'tall'
+       */
+
+      tallClass: 'tall'
     },
     
     ready: function() {
